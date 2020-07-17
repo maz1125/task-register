@@ -61,5 +61,4 @@
       }
     },
   }
-  //https://trello.com/1/cards?key=2fd7c449f94fc452a2010a6ffc70d3d0&token=55f63bda4ef69f548781eecb7657bba5694a9718561afa8016802a1a17e7b999&idList=5efee6cee1d7e04130a8ffcb&name=ホゲホゲ01
 </script>
