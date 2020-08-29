@@ -20,9 +20,12 @@
           v-model="title"
           ></v-text-field>
         <v-btn @click="save">登録</v-btn>
+        <v-btn @click="notifySlack">slackに通知</v-btn>
+        <input id="input-39" type="text">
       </v-col>
     </v-row>
   </v-container>
+
 </template>
 
 <script>
@@ -44,6 +47,9 @@
         this.postTask()
         this.clearInput()
       },
+      notifySlack(){
+        this.notify()
+      },
       setParam(){
         this.queryParams.name = this.title
       },
@@ -58,7 +64,23 @@
         } else {
           console.log("error")
         }
-      }
+      },
+      async notify(){
+        const url = '';
+        const url2 = '';
+
+        const data = {
+          text: this.title
+        };
+        let result = await this.axios.post(url,`payload=${JSON.stringify(data)}`);
+        await this.axios.post(url2,`payload=${JSON.stringify(data)}`);
+        if(result.state){
+          console.log("success")
+        } else {
+          console.log("error")
+        }
+      },
+
     },
   }
 </script>
