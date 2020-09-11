@@ -19,6 +19,7 @@
           single-line
           v-model="title"
           ></v-text-field>
+        <v-btn @click="record">{{ recordBtnValue }}</v-btn>
         <v-btn @click="save">登録</v-btn>
         <v-btn @click="notifySlack">slackに通知</v-btn>
         <input id="input-39" type="text">
@@ -30,8 +31,6 @@
 
 <script>
   export default {
-    name: 'HelloWorld',
-
     data: () => ({
       title:"",
       queryParams:{
@@ -39,8 +38,21 @@
         token:"",
         idList:"",
         name:""
-      }
+      },
+      recognizing:false,
+      recognition:null,
+      recordBtnValue: "録音",
+      recoredText:"",
+
     }),
+    async created() {
+      // const { webkitSpeechRecognition } = window as any;
+      const recognition = new window.webkitSpeechRecognition()
+      recognition.lang = "ja-JP"
+      recognition.continuous = true
+      recognition.onresult = await this.recognize
+      this.recognition = recognition
+    },
     methods: {
       save(){
         this.setParam()
@@ -79,6 +91,35 @@
         } else {
           console.log("error")
         }
+      },
+      record() {
+        if (this.recognizing) {
+          this.recognition.stop();
+          this.recordBtnValue = "録音";
+        } else {
+          this.recognition.start();
+          this.clearInput()
+          this.recordBtnValue = "停止";
+        }
+        this.recognizing = !this.recognizing;
+      },
+      async recognize(e) {
+        let word = `${e.results[e.results.length - 1][0].transcript}`
+        let target = `${e.results[e.results.length - 1][0].transcript}\n`
+        if(word === "登録"){
+          console.log("reg")
+          this.postTask()
+          this.record()
+        } else if (word === "通知"){
+          console.log("notify")
+          this.notify()
+          this.record()
+        } else {
+          console.log("other")
+          this.recoredText += target
+          this.title = this.recoredText
+        }
+
       },
 
     },
