@@ -1,0 +1,212 @@
+body {
+    font-family: "Open Sans", "Noto Sans Japanese", ãƒ¡ã‚¤ãƒªã‚ª, sans-serif;
+    font-size: 16px;
+    color: rgb(36, 36, 63);
+    background: rgb(89, 96, 118);
+    transition: background 0.15s ease 0s;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+/* header */
+.logo-icon01{
+  width: 73px;
+  height: 47px;
+}
+.logo-icon02 {
+    width: 87px;
+    height: 27px;
+}
+.main-header-area {
+    background: #fff;
+    border-top: 4px solid #0b41a0;
+    border-bottom: 1px solid #c8cbce;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 64px;
+    transition: transform .3s ease-in-out,opacity .3s ease-in-out;
+}
+.main-header-body {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    width: auto;
+    margin: 0 24px;
+}
+
+/* body */
+.main-contents-area {
+    background: rgb(28, 128, 231);
+    padding: 88px 0px 24px;
+}
+.header-label {
+  font-size: 22px;
+  color: #2440a4;
+}
+
+.main-contents-body {
+    width: 780px;
+    max-width: 100%;
+    background: rgb(255, 255, 255);
+    border-width: 1px 1px 2px;
+    border-style: solid;
+    border-color: rgb(216, 219, 221) rgb(216, 219, 221) rgb(200, 203, 206);
+    border-image: initial;
+    border-bottom: 2px solid rgb(200, 203, 206);
+    border-radius: 6px;
+    margin: 0px auto 24px;
+}
+
+.header-area {
+    list-style: none;
+    border-bottom: 1px solid rgb(227, 229, 230);
+    padding: 16px;
+}
+
+/* footer */
+.footer-area {
+    padding: 24px 16px;
+}
+
+.footer-body {
+    /* width: 780px; */
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.footer-contents {
+    width: 300px;
+}
+
+.footer-logo {
+    margin-bottom: 16px;
+    max-width: 300px;
+    opacity: 1;
+}
+.footer-link {
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}
+
+/* contents */
+.contents{
+  border-bottom: 1px solid rgb(227, 229, 230);
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.contents-header{
+  font-weight: bold;
+  color: #2440a4;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.contents-body{
+  color: #485c77;
+  font-size: 14px;
+}
+
+
+.download-button {
+  display       : inline-block;
+  border-radius : 10%;          /* 角丸       */
+  font-size     : 10pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 12px 12px;   /* 余白       */
+  background    : #4694eb;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 1px 1px 3px #4694eb;  /* 影の設定 */
+  border        : 2px solid #4694eb;    /* 枠の指定 */
+  text-decoration: none;
+}
+
+/* media対応 */
+.body-area,.main-header-body-media{
+  min-width: 160%;
+}
+
+.main-contents-media{
+  width: 500px;
+}
+
+.main-contents {
+  margin-right: 5%;
+  margin-left: 5%;
+  transform: none;
+  opacity: 1;
+  transition: transform 0.25s cubic-bezier(0.11, 0.57, 0.14, 1) 0.1s, opacity 0.25s cubic-bezier(0.11, 0.57, 0.14, 1) 0.1s;
+}
+
+.contents-text{
+  flex-basis: 450px;
+}
+
+.contents-button{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 12px;
+}
+.download-button {
+  width: 300px;
+}
+@media screen and (min-width:768px)  and ( max-width:1024px) {
+  .body-area,.main-header-body-media{
+    min-width: 130%;
+  }
+  .main-contents-media{
+    width: 800px;
+  }
+  .main-contents {
+    margin-right: auto;
+    margin-left: auto;
+    transform: none;
+    opacity: 1;
+    transition: transform 0.25s cubic-bezier(0.11, 0.57, 0.14, 1) 0.1s, opacity 0.25s cubic-bezier(0.11, 0.57, 0.14, 1) 0.1s;
+  }
+  .contents-text{
+    flex-basis: 500px;
+  }
+  .contents-button{
+    padding-right: 20px;
+    width: auto;
+    display: block;
+  }
+  .download-button {
+    width: auto;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .body-area,.main-header-body-media{
+    min-width: 100%;
+  }
+  .main-contents-media{
+    width: 1240px;
+  }
+  .main-contents {
+    margin-right: auto;
+    margin-left: auto;
+    transform: none;
+    opacity: 1;
+    transition: transform 0.25s cubic-bezier(0.11, 0.57, 0.14, 1) 0.1s, opacity 0.25s cubic-bezier(0.11, 0.57, 0.14, 1) 0.1s;
+  }
+  .contents-text{
+    flex-basis: 540px;
+  }
+  .contents-button{
+    padding-right: 20px;
+    width: auto;
+    display: block;
+  }
+  .download-button {
+    width: auto;
+  }
+}
