@@ -1,0 +1,29 @@
+{
+    "name": "TaskRegister",
+    "short_name": "TaskRegister",
+    "icons": [{
+            "src": "img/icons/Task_Register.png",
+            "sizes": "60x60",
+            "type": "image/png"
+        },
+        {
+            "src": "img/icons/Task_Register.png",
+            "sizes": "76x76",
+            "type": "image/png"
+        },
+        {
+            "src": "img/icons/Task_Register.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "img/icons/Task_Register.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "*",
+    "display": "standalone",
+    "background_color": "#FFFFFF",
+    "theme_color": "#FFFFFF"
+}
