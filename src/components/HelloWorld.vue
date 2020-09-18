@@ -93,21 +93,27 @@
         }
       },
       record() {
-        if (this.recognizing) {
-          this.recognition.stop();
-          this.recordBtnValue = "録音";
+        if(this.recognition in window){
+          if (this.recognizing) {
+            this.recognition.stop();
+            this.recordBtnValue = "録音";
+          } else {
+            alert("録音開始")
+            this.recognition.start();
+            this.clearInput()
+            this.recordBtnValue = "停止";
+          }
+          this.recognizing = !this.recognizing;
         } else {
-          this.recognition.start();
-          this.clearInput()
-          this.recordBtnValue = "停止";
+          alert("このブラウザは、音声認識に対応してません")
         }
-        this.recognizing = !this.recognizing;
       },
       async recognize(e) {
         let word = `${e.results[e.results.length - 1][0].transcript}`
         let target = `${e.results[e.results.length - 1][0].transcript}\n`
         if(word === "登録"){
           console.log("reg")
+          this.setParam()
           this.postTask()
           this.record()
         } else if (word === "通知"){
@@ -116,7 +122,7 @@
           this.record()
         } else {
           console.log("other")
-          this.recoredText += target
+          this.recoredText = target
           this.title = this.recoredText
         }
 
