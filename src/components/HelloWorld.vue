@@ -54,9 +54,6 @@
       time:"",
       message:"",
       queryParams:{
-        key:"",
-        token:"",
-        idList:"",
         name:"",
       },
       recognizing:false,
@@ -89,7 +86,7 @@
         this.notify(sendMessage)
       },
 
-      sendReminder(){
+      async sendReminder(){
         let url = 'https://slack.com/api/reminders.add'
         let result = await this.axios.post(url,this.queryParams);
         if(result.state){
@@ -168,6 +165,5 @@
 
       },
 
-    },
-  }
+    }
 </script>
