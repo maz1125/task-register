@@ -39,6 +39,7 @@
         <v-btn @click="save">登録</v-btn>
         <v-btn @click="notifySlack">slackに通知</v-btn>
         <v-btn @click="remindSlack">Reminderをセット</v-btn>
+        <v-btn @click="registerAccountList">アカウント登録</v-btn>
         <input id="input-39" type="text">
       </v-col>
     </v-row>
@@ -60,6 +61,8 @@
       recognition:null,
       recordBtnValue: "録音",
       recoredText:"",
+      memberCode4:[],
+      memberCode:[],
 
     }),
     async created() {
@@ -71,10 +74,57 @@
       this.recognition = recognition
     },
     methods: {
+      registerAccountList(){
+        let index = 305
+        this.memberCode.forEach(function(value){
+          this.registerAccount(value,index)
+          index++
+        }.bind(this))
+      },
+      registerAccount(value,index){
+        console.log("asdf")
+        const url = 'https://egs-organization-api-external.stg.eigosapuri.jp/organization/v1/auth/register';
+        const data = this.getAccountData()
+        console.log(data)
+        data.memberCode = value
+        data.firstName = "速度"+index
+        data.userName = "sokudotaro"+index
+        let result = this.axios.put(url,data);
+        if(result.state){
+          console.log("success")
+        } else {
+          console.log("error")
+        }
+      },
+      getAccountData(){
+        return {
+        birthdayDay: 22,
+        birthdayMonth: 1,
+        birthdayYear: 2021,
+        firstName: "速度",
+        firstNameKana: "そくど",
+        lastName: "４",
+        lastNameKana: "よん",
+        password: "12345abcde",
+        sex: 1,
+        affiliation: {
+          schoolYear: "高校3",
+          className: "1",
+          attendanceNumber: "2",
+          departmentName: "",
+          employeeNumber: ""
+          }
+        }
+      },
       save(){
         this.setParam()
         this.postTask()
         this.clearInput()
+      },
+      register(){
+        console.log("suadsf")
+        this.notifySlack()
+        this.registerAccount()
       },
       notifySlack(){
         this.notify()
@@ -146,6 +196,7 @@
         // }
       },
       async recognize(e) {
+        console.log("asdadsfgasf")
         let word = `${e.results[e.results.length - 1][0].transcript}`
         let target = `${e.results[e.results.length - 1][0].transcript}\n`
         if(word === "登録"){
@@ -164,6 +215,5 @@
         }
 
       },
-
-    }
+  }
 </script>
